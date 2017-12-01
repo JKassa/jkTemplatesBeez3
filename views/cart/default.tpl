@@ -180,22 +180,43 @@
         </td>
       </tr>
       {% endif %}
+	  
+	  {% if discounts.sav %}
+      <!--Discount sav-->
+      <tr>
+        <td colspan="3" class="text-right">
+          {{ discounts.sav.name }}:
+        </td>
+        <td>
+          -{{ discounts.sav.difference | costDisplay }}{{ currency.symbol }}
+		  {% if discounts.sav.percent %}
+		  <em>({{ discounts.sav.discount }}%)</em>
+		  {% endif %}
+          {% if discounts.sav.desc %}
+          <img alt="info" src="media/system/images/tooltip.png" title="{{ discounts.sav.desc }}">
+          {% endif %}
+        </td>
+      </tr>
+      {% endif %}
       
       {% if discounts.sum %}
-      <!--Discounts sum-->
+      <!--Discount sum-->
       <tr>
         <td colspan="3" class="text-right">
           {{ discounts.sum.name }}:
         </td>
         <td>
           -{{ discounts.sum.difference | costDisplay }}{{ currency.symbol }}
+		  {% if discounts.sum.percent %}
+		  <em>({{ discounts.sum.discount }}%)</em>
+		  {% endif %}
           {% if discounts.sum.desc %}
           <img alt="info" src="media/system/images/tooltip.png" title="{{ discounts.sum.desc }}">
           {% endif %}
         </td>
       </tr>
       {% endif %}
-	  
+	  	  
 	  {% if sum_vat %}
 	  <!--Sum of VAT-->
 	  <tr>

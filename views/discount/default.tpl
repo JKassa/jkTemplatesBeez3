@@ -37,14 +37,14 @@
   {{ introtext }}
 </div>
 
+{% if products %}
 <hr>
-
 <!--Layout products-->
 {{ products }}
+{% endif %}
 
 {% if fulltext %}
 <hr>
-
 <div>
   {{ fulltext }}
 </div>
