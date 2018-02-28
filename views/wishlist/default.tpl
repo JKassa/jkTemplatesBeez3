@@ -62,9 +62,14 @@
             
             <!--Product Image-->
             <div class="text-center">
+			  {% assign jkmedialist = product.image | jkmedialist: product.images, '', '', product.url %}
+			  {% if jkmedialist %}
+	            {{ jkmedialist }}
+              {% else %}
               <a href="{{ product.url }}">
                 <img {{ product.image | img_exists: '104x150' }} alt="{{ product.alias }}" />
               </a>
+			  {% endif %}
             </div>
             
             {% if product.present %}
