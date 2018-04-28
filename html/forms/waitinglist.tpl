@@ -62,6 +62,11 @@
       {% endif %}
       <!--cost-->
       <span>{{ cost }}</span>{{ currency.symbol }}
+	  {% if vat %}
+	  <small>
+		({{ 'sprintf' | jtext: 'COM_JKASSA_VAT_INCL', vat }})
+	  </small>
+      {% endif %}
     </div>
   </div>
 </div>

@@ -68,6 +68,7 @@
   <div>
     <input type="text" id="coupons_code" placeholder="{{ '_' | jtext: 'COM_JKASSA_ORDER_CODE_ENTER' }}" value="{{ coupon.value }}">
     <button data-click="code-apply" type="button">{{ '_' | jtext: 'COM_JKASSA_APPLY' }}</button>
+	<button data-click="code-clear" type="button">{{ '_' | jtext: 'JCLEAR' }}</button>
     {% if coupon.note %}
     <p>
       {{ coupon.note }}
