@@ -319,7 +319,7 @@
 {% assign com_tabbed = id | jkcomments: name, 'tabbed' %}
 
 <!--Tabs-->
-<div>
+<div class="items-row">
   <ul class="tabs" id="prodTab">
     <li class="active">
       <a href="#description" data-toggle="tab">
@@ -408,7 +408,7 @@
 
 {% if cheaper %}
 <!--Share: Together cheaper-->
-<div>
+<div class="items-row">
   <h3>{{ '_' | jtext: 'COM_JKASSA_CART_TOGETHER_CHEAPER' }}</h3>
   {% include 'html/products/cheaper' %}
 </div>
@@ -427,6 +427,15 @@
   <!--Print / Email / Edit-->
   <ul class="actions">
     {% if print_screen == 0 %}
+	  {% if aff_income %}
+	  <li class="affiliate-icon">
+		{{ 'behavior.modal' | jhtml: '#jk-modal_affiliate' }}
+        <a href="{{ aff_url }}" id="jk-modal_affiliate" rel="{handler: 'iframe', size: {x:768, y:430}}">
+		  {{ 'image' | jhtml: 'system/weblink.png', 'aff', '', 1 }}
+          {{ '_' | jtext: 'COM_JKASSA_AFFILIATE_PROGRAM' }}
+        </a>
+	  </li>
+	  {% endif %}
       <li class="print-icon">
         {{ print_icon }}
       </li>

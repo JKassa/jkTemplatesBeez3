@@ -73,6 +73,14 @@
     </a>
   </li>
   {% endif %}
+  {% if affiliate %}
+  <li>
+	{{ 'behavior.modal' | jhtml: '#jk-modal_affiliate' }}
+	<a href="{{ affiliate_url }}" id="jk-modal_affiliate" rel="{handler: 'iframe', size: {x:768, y:430}}">
+	  {{ '_' | jtext: 'COM_JKASSA_AFFILIATE_PROGRAM' }}
+	</a>
+  </li>
+  {% endif %}
 </ul>
 
 {% if posttext %}
