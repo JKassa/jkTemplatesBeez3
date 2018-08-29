@@ -34,6 +34,15 @@
         {{ attribute.title }}
       </label>
       {% endfor %}
+	  
+	  {% when 'texture' %}
+      <!--Сolor switches-->
+      {% for attribute in variant.attributes %}
+      <label class="radio">
+        <input type="radio" data-checked="variant-texture" data-attr-title="{{ attribute.title }}" name="variant-{{ product }}-{{ variant.id }}" value="{{ attribute.value }}"{% if attribute.default %} checked{% endif %}>
+        {{ attribute.title }}
+      </label>
+      {% endfor %}
     {% endcase %}
     
     {% if variant.tooltip %}

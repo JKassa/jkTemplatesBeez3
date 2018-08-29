@@ -35,20 +35,11 @@
           <small>
             {% for variant in product.variants %}
               {{ variant.name }}:
-              {% case variant.type %}
-              {% when 'radio' %}
-              <span class="variant-radio-value">
-                {{ variant.value }}
-              </span>
-              {% when 'color' %}
-              <span class="minicolors-swatch">
-                <span style="background-color: {{ variant.value }};" title="{{ variant.title }}"></span>
-              </span>
-              {% when 'select' %}
-              <span>
-                {{ variant.value }}
-              </span>
-              {% endcase %}
+              {% if variant.type == 'color' or variant.type == 'texture' %}
+				{{ variant.title }}
+			  {% else %}
+				{{ variant.value }}
+			  {% endif %}
             {% endfor %}
           </small>
           {% endif %}
