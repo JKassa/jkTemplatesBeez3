@@ -5,10 +5,11 @@
 {{ 'script' | jhtml: 'js/template.js' }}
 {{ 'behavior.modal' | jhtml: '.jk-quick_view' }}
 
-<!--Header-->
 {% if heading %}
+<!--Heading-->
 <h1>{{ heading }}</h1>
-{% else %}
+{% elsif title %}
+<!--Title-->
 <h2>{{ title }}</h2>
 {% endif %}
 

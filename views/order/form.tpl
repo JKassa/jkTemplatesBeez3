@@ -180,6 +180,35 @@
   </fieldset>
   {% endif %}
   
+  {% if privacy %}
+  <!--Privacy Policy-->
+  <fieldset>
+	<legend>{{ privacy.legend }}</legend>
+	<div>
+	  <p>{{ privacy.note }}</p>
+	</div>
+	<label for="jk_privacy">
+	  {% if privacy.article %}
+	  {{ 'behavior.modal' | jhtml }}
+	  <a href="{{ privacy.article }}" class="modal" rel="{handler: 'iframe', size: {x:800, y:500}}">
+		{{ privacy.label }}
+	  </a>
+	  {% else %}
+	    {{ privacy.label }}
+	  {% endif %}
+	  <span class="star text-error">*</span>
+	</label>
+	<label class="radio">
+	  <fieldset id="jk_privacy" class="required radio" required="required" aria-required="true" title="{{ privacy.desc }}">
+	    <input id="jk_privacy0" name="jk_privacy" value="1" required="" aria-required="true" type="radio">
+	    <label for="jk_privacy0">{{ privacy.agree }}</label>
+	    <input id="jk_privacy1" name="jk_privacy" value="0" checked="checked" required="" aria-required="true" type="radio">
+	    <label for="jk_privacy1">{{ '_' | jtext: 'JNO' }}</label>
+	  </fieldset>
+    </label>
+  </fieldset>
+  {% endif %}
+  
   {% if rules %}
   <!--Shop rules-->
   <label class="checkbox">
