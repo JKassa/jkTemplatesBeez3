@@ -1,9 +1,6 @@
 {% for category in categories %}
   {% capture title_slide %}{{ category.title }}{% if category.qty_products %} <small><em>({{ category.qty_products }})</em></small>{% endif %}{% endcapture %}
   {% capture collapseId %}collapseSlider-{{ category.id }}{% endcapture %}
-  {% if category.active %}
-    {% assign active = ' in' %}
-  {% endif %}
   
   {{ 'sliders.panel' | jhtml: title_slide, collapseId }}
     

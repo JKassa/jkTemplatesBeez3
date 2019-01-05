@@ -6,7 +6,7 @@
   {% assign background = '999999' %}
 {% endif %}
 
-<div id="jk-compare-module">
+<div id="jk-compare-module" class="{{ class_sfx }}">
 	<a href="{{ url_compare }}" style=" display: block; position: relative; width: 30px;height: 30px" title="{{ image_title }}">
 	  <span style="display: block; margin-top: 5px">
 		<img alt="compare" src="{{ image }}">

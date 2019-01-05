@@ -6,7 +6,7 @@
   {% assign background = '999999' %}
 {% endif %}
 
-<div id="jk-cart-module">
+<div id="jk-cart-module" class="{{ class_sfx }}">
 	<a id="jk-cart-module" href="{{ url_cart }}" style=" display: block; position: relative; width: 30px;height: 30px" title="{{ image_title }}">
 	  <span style="display: block; margin-top: 5px">
 		<img alt="cart" src="{{ image }}">

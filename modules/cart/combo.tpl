@@ -1,6 +1,6 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 
-<div id="jk-cart-module" class="article-info">
+<div id="jk-cart-module" class="article-info {{ class_sfx }}">
   {% if image %}
     <div class="box text-center" style="min-height: 0px">
       <a href="{{ url_cart }}">

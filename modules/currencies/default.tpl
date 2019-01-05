@@ -6,11 +6,11 @@
 
 {% case layout %}
 	{% when 'list' %}
-<ul class="unstyled">
+<ul class="unstyled {{ class_sfx }}">
   {% include 'modules/currencies/list' %}
 </ul> 
     {% when 'dropdown' %}
-<form name="currency" method="post" action="{{ action }}">
+<form name="currency" method="post" action="{{ action }}" class="{{ class_sfx }}">
   <select name="cur_id" class="inputbox" onchange="this.form.submit()">
     {% include 'modules/currencies/dropdown' %}
   </select>
@@ -20,7 +20,7 @@
 </form>
     {% when 'bootstrap' %}
     {{ 'bootstrap.framework' | jhtml }}
-<div class="btn-group">
+<div class="btn-group {{ class_sfx }}">
   {% include 'modules/currencies/bootstrap' %}
 </div> 
 {% endcase %}

@@ -11,7 +11,7 @@
   {% assign column_info = 2 %}
 {% endif %}
 
-<div id="jk-cart-module" class="article-info">
+<div id="jk-cart-module" class="article-info {{ class_sfx }}">
   <ul class="items-row cols-{{ cols }}">
     {% if image %}
     <li class="item column-{{ column_img }} text-center">

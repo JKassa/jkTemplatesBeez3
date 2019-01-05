@@ -9,8 +9,8 @@
         {% if field.required %} required{% endif %}
         {% if field.readonly %} disabled{% endif %}
         {% if field.onchange %} onchange="{{ field.onchange }}"{% endif %}>
-      {% for value in field.values %}
-      <option value="{{ value }}"{% if field.default == value %} selected{% endif %}>{{ value }}</option>
+      {% for val in field.values %}
+      <option value="{{ val.value }}"{% if field.default == val.value %} selected{% endif %}>{{ val.text }}</option>
       {% endfor %}
     </select>
   </span>

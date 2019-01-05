@@ -1,4 +1,4 @@
-<div{% if field.showon %} data-showon='{{ field.showon }}'{% endif %}>
+<div id="jk_location"{% if field.showon %} data-showon='{{ field.showon }}'{% endif %}>
   <label class="control-label">
     {{ field.label }}{% if field.required %} <span class="star text-error">*</span>{% endif %}
   </label>
