@@ -49,7 +49,7 @@
 			  {% endif %}
               {% if product.cost %}
               <p itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                {% if product.old_cost %}
+                {% if product.cost and product.old_cost %}
                 <del>{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del>
                 {% endif %}
                 <span class="cost">

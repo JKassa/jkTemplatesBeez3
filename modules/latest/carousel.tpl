@@ -147,7 +147,7 @@
 jQuery(document).ready(function ()
 {
 	jQuery('#mjklCarousel_{{ mod_id }}').carousel({
-		interval: 6000,
+		interval: {{ interval }},
 		string: "hover"
 	});
 	

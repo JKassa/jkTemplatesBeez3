@@ -25,7 +25,11 @@
   <fieldset class="filters">
     <div class="pull-right">
       {{ '_' | jtext: 'JGLOBAL_DISPLAY_NUM' }}
-      {{ limit }}
+      <select onchange="this.form.submit()" name="limit" title="{{ '_' | jtext: 'JSHOW' }}" style="width: auto;">
+        {% for limit in limits %}
+          <option value="{{ limit.value }}"{{ limit.selected }}>{{ limit.title }}</option>
+        {% endfor %}
+      </select>
     </div>
   </fieldset>
   
@@ -39,8 +43,11 @@
         <h4 style="margin: 0 0 5px;">
           <a href="{{ item.url }}">
             {{ item.name }}
-            <small>({{ 'plural' | jtext: 'COM_JKASSA_PRODUCTS_QUANTITY', item.products_quantity }})</small>
           </a>
+		  &nbsp;
+		  <small>
+			({{ 'plural' | jtext: 'COM_JKASSA_PRODUCTS_QUANTITY', item.products_quantity }})
+		  </small>
         </h4>
         {{ item.introtext }}
       </div>

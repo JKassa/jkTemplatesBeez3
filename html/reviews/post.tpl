@@ -1,7 +1,7 @@
 <div id="reviewPost{{ review_id }}" class="article-info">
 	<!--Img-->
 	<span class="pull-left" style="margin-right: 10px;">
-		<img src="{{ user_img }}" class="media-object" alt="{{ user_name }}" style="width: 64px; height: 64px;">
+		<img src="{{ user_img }}" alt="{{ user_name }}" style="width: 64px; height: 64px;">
 	</span>
 	<div style="overflow: hidden;">
 		<!--Name / Rating / Date-->

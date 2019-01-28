@@ -28,12 +28,12 @@
       <li>
         <!--Sort by-->
         {{ '_' | jtext: 'COM_JKASSA_SORT_TITLE' }}:
-        <select data-select="products-sorting" name="product-sorting" class="input-medium">
+        <select data-select="products-sorting" name="product-sorting">
           {% for sort in sorting %}
           <option value="{{ sort.value }}" {{ sort.selected }}>{{ sort.title }}</option>
           {% endfor %}
         </select>
-        <select data-select="products-limit" title="{{ '_' | jtext: 'JSHOW' }}" class="input-medium" style="width: auto;">
+        <select data-select="products-limit" title="{{ '_' | jtext: 'JSHOW' }}" style="width: auto;">
           {% for limit in limits %}
           <option value="{{ limit.value }}" {{ limit.selected }}>{{ limit.title }}</option>
           {% endfor %}
