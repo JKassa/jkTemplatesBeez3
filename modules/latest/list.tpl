@@ -4,7 +4,7 @@
     {% if product.image %}
     <p>
       <a itemprop="url" href="{{ product.url }}">
-        <img itemprop="image" src="{{ product.image }}" alt="{{ product.alias }}" style="max-height: 50px; max-width: 50px" />
+        <img itemprop="image" src="{{ product.image }}" alt="{{ product.alias }}" style="{{ img_height }}" />
       </a>
     </p>
     {% endif %}

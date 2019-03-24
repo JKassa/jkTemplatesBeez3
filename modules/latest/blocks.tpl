@@ -5,11 +5,11 @@
       {% assign rowcount = rowcount | plus: 1 %}
       <li itemscope itemtype="http://schema.org/Product" class="item column-{{ rowcount }}">
         <div class="article-info">
-          <div style="height: {{ block_height }}px">
+          <div style="{{ block_height }}">
             {% if product.image %}
             <div class="product-image" style="text-align: center">
               <a itemprop="url" href="{{ product.url }}" title="{{ product.name }}">
-                <img itemprop="image" src="{{ product.image }}" alt="{{ product.alias }}" style="max-height: 75px; max-width: 75px" />
+                <img itemprop="image" src="{{ product.image }}" alt="{{ product.alias }}" style="{{ img_height }}" />
               </a>
             </div>
             {% endif %}
