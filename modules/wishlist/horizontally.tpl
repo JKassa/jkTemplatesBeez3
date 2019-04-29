@@ -46,9 +46,8 @@
 
 				{% if product.manufacturer %}
 				<!--Manufacturer name and miniature-->
-				<div class="manufacturer" itemtype="http://schema.org/Brand" itemscope itemprop="brand">
-				  <span style="display: none;" itemprop="name">{{ product.manufacturer.name }}</span>
-				  <img {{ product.manufacturer.thumbnail | img_exists: '30x30' }} itemprop="logo" alt="{{ product.manufacturer.alias }}" title="{{ product.manufacturer.name }}">
+				<div class="manufacturer">
+				  <img {{ product.manufacturer.thumbnail | img_exists: '30x30' }} alt="{{ product.manufacturer.alias }}" title="{{ product.manufacturer.name }}">
 				</div>
 				{% endif %}
 
@@ -89,16 +88,14 @@
 				</h4>
 
 				<!--Price the product-->
-				<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+				<div>
 				  {% if product.old_cost %}
 				  <!--old cost-->
 				  <del>{{ product.old_cost }}</del>
 				  {% endif %}
 				  <!--cost-->
 				  <span class="cost">
-					<meta itemprop="priceCurrency" content="{{ currency.code }}" />
-					{% assign options = 'dec_point,thousands_sep' | arrayCombine: '.', '*' %}
-					<span itemprop="price" content="{{ product.cost | costDisplay: options }}">{{ product.cost }}</span>{{ currency.symbol }}
+					<span>{{ product.cost }}</span>{{ currency.symbol }}
 				  </span>
 				</div>
 

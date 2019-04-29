@@ -61,11 +61,11 @@
 {% endif %}
 
 <!--Product-->
-<div class="items-row cols-2" itemscope itemtype="http://schema.org/Product">
+<div class="items-row cols-2">
   <!--Name-->
   <h2>
-    <a itemprop="url" href="{{ url }}" target="_top">
-      <span itemprop="name">{{ name }}</span>
+    <a href="{{ url }}" target="_top">
+      {{ name }}
     </a>
     {% if files %}
     <!--Files-->
@@ -129,10 +129,9 @@
     
     {% if manufacturer %}
     <!--Manufacturer-->
-    <div itemtype="http://schema.org/Brand" itemscope itemprop="brand">
+    <div>
       <a title="{{ manufacturer.name }}" href="{{ manufacturer.url }}" target="_top">
-		<span style="display: none;" itemprop="name">{{ manufacturer.name }}</span>
-        <img src="{{ manufacturer.logo }}" alt="{{ manufacturer.alias }}" style="max-height: 60px; max-width: 200px" itemprop="logo">
+        <img src="{{ manufacturer.logo }}" alt="{{ manufacturer.alias }}" style="max-height: 60px; max-width: 200px">
       </a>
     </div>
     {% endif %}
@@ -171,14 +170,11 @@
     {% endif %}
     
     <!--Cost-->
-    <div class="cost" itemscope itemprop="offers" itemtype="http://schema.org/Offer">
-      <meta content="{{ currency.code }}" itemprop="priceCurrency">
-      <link href="http://schema.org/InStock" itemprop="availability">
+    <div class="cost">
       {% if old_cost %}
       <del>{{ old_cost | costDisplay }}{{ currency.symbol }}</del>
       {% endif %}
-	  {% assign options = 'dec_point,thousands_sep' | arrayCombine: '.', '*' %}
-      <span itemprop="price" content="{{ cost | costDisplay: options }}">{{ cost | costDisplay }}</span>{{ currency.symbol }}
+      <span>{{ cost | costDisplay }}</span>{{ currency.symbol }}
 	  {% if vat %}
 	  <small>
 		({{ 'sprintf' | jtext: 'COM_JKASSA_VAT_INCL', vat }})
@@ -186,14 +182,13 @@
       {% endif %}
     </div>
     
+	{% if sku %}
     <!--SKU (code)-->
     <div class="text-right">
-      {{ '_' | jtext: 'COM_JKASSA_SKU' }}:
-      <small itemprop="mpn">
-        {{ sku }}
-      </small>
+      {{ '_' | jtext: 'COM_JKASSA_SKU' }}: {{ sku }}
     </div>
-    
+    {% endif %}
+	
     {% comment %}
         Variants product.
         See: html\forms\variants.tpl
@@ -305,11 +300,6 @@
     {{ social }}
     {% endif %}
   </div>
-  
-  <!--Product Description (introtext)-->
-  <span itemprop="description" style="display: none">
-    {{ introtext | truncateDesc: 140 }}
-  </span>
 </div>
 
 {% comment %}
@@ -476,19 +466,19 @@
       {{ 'sprintf' | jtext: 'COM_JKASSA_CATEGORY', category }}
     </dd>
     <dd>
-      <time datetime="{{ 'date' | jhtml: publish, 'c' }}">
+      <time>
         {% assign date_publish = 'date' | jhtml: publish, 'DATE_FORMAT_LC2' %}
         {{ 'sprintf' | jtext: 'COM_JKASSA_PUBLISHED_DATE_ON', date_publish }}
       </time>
     </dd>
     <dd>
-      <time datetime="{{ 'date' | jhtml: created, 'c' }}">
+      <time>
         {% assign date_created = 'date' | jhtml: created, 'DATE_FORMAT_LC2' %}
         {{ 'sprintf' | jtext: 'COM_JKASSA_CREATED_DATE_ON', date_created }}
       </time>
     </dd>
     <dd>
-      <time datetime="{{ 'date' | jhtml: modified, 'c' }}">
+      <time>
         {% assign date_modified = 'date' | jhtml: modified, 'DATE_FORMAT_LC2' %}
         {{ 'sprintf' | jtext: 'COM_JKASSA_LAST_UPDATED', date_modified }}
       </time>

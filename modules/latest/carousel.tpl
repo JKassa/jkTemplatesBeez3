@@ -17,38 +17,34 @@
         {% assign rowcount = 0 %}
         {% for product in row %}
 			{% assign rowcount = rowcount | plus: 1 %}
-			<li itemscope itemtype="http://schema.org/Product" class="item column-{{ rowcount }}">
+			<li class="item column-{{ rowcount }}">
 				<div class="article-info">
 				  <div style="{{ block_height }}">
 					{% if product.image %}
 					<div class="product-image" style="text-align: center">
-					  <a itemprop="url" href="{{ product.url }}" title="{{ product.name }}">
-						<img itemprop="image" src="{{ product.image }}" alt="{{ product.alias }}" style="{{ img_height }}" />
+					  <a href="{{ product.url }}" title="{{ product.name }}">
+						<img src="{{ product.image }}" alt="{{ product.alias }}" style="{{ img_height }}" />
 					  </a>
 					</div>
 					{% endif %}
 					<div class="caption">
 					  <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">
-						<a itemprop="url" href="{{ product.url }}" title="{{ product.name }}">
-						  <span itemprop="name">{{ product.name }}</span>
+						<a href="{{ product.url }}" title="{{ product.name }}">
+						  {{ product.name }}
 						</a>
 					  </div>
 					  {% if product.introtext %}
 					  <p style="font-size: 11px; line-height: 14px">
-						<span itemprop="description">
 						  {{ product.introtext | truncateDesc: 35 }}
-						</span>
 					  </p>
 					  {% endif %}
 					  {% if product.cost %}
-					  <p itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+					  <p>
 						{% if product.old_cost %}
 						<del>{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del>
 						{% endif %}
 						<span class="cost">
-						  <meta itemprop="priceCurrency" content="{{ currency.code }}">
-						  {% assign options = 'dec_point,thousands_sep' | arrayCombine: '.', '*' %}
-						  <span itemprop="price" content="{{ product.cost | costDisplay: options }}">{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
+						  <span>{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
 						</span>
 					  </p>
 					  {% endif %}
@@ -102,7 +98,7 @@
 						<p>
 						  {% if readmore %}
 						  <!--More-->
-						  <a itemprop="url" class="button" href="{{ product.url }}">
+						  <a class="button" href="{{ product.url }}">
 							{{ '_' | jtext: 'JGLOBAL_DESCRIPTION' }}
 						  </a>
 						  {% endif %}

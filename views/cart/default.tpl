@@ -56,10 +56,13 @@
       {% for product in products %}
       <tr>
         <td class="product-image">
-          {% if product.discount %}
+          {% if product.d_simple %}
           <ul class="stickers">
             <li>
-              <span class="product-label">-{{ product.discount | costDisplay }}{{ product.d_symbol }}</span>
+              <span class="product-label">
+                {% assign options = 'decimals' | arrayCombine: 0 %}
+                -{{ product.d_simple.value | costDisplay: options }}{% if product.d_simple.symbol == '%' %}{{ product.d_simple.symbol }}{% endif %}
+              </span>
             </li>
           </ul>
           {% endif %}
@@ -128,6 +131,20 @@
             {% endif %}
             <!--cost-->
             <span>{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
+			{% if product.d_coupon %}
+			<!--Promotional code-->
+			<br>
+			<small>
+			  <strong>{{ product.d_coupon.name }}</strong>:
+			  -{{ product.d_coupon.difference | costDisplay }}{{ currency.symbol }}
+			  {% if product.d_coupon.symbol == '%' %}
+			  <em>({{ product.d_coupon.value }}%)</em>
+			  {% endif %}
+			  {% if product.d_coupon.desc %}
+			  <img alt="help" src="media/system/images/tooltip.png" title="{{ product.d_coupon.desc }}">
+			  {% endif %}
+			</small>
+			{% endif %}
           </p>
         </td>
         <td class="text-center" width="20%">

@@ -18,7 +18,7 @@
         {{ '_' | jtext: 'COM_JKASSA_QUANTITY' }}
       </th>
       <!--Price-->
-      <th>
+      <th class="text-center">
         {{ '_' | jtext: 'COM_JKASSA_COST' }}
       </th>
     </tr>
@@ -59,6 +59,29 @@
           {% endfor %}
         </div>
         {% endif %}
+		
+		{% if product.d_simple %}
+        <!--Discount-->
+        <br>
+        <small>
+          {{ product.d_simple.name }}:
+          -{{ product.d_simple.difference | costDisplay }}{{ currency.symbol }}
+          {% if product.d_simple.symbol == '%' %}
+          <em>({{ product.d_simple.value }}%)</em>
+          {% endif %}
+        </small>
+        {% endif %}
+        {% if product.d_coupon %}
+        <!--Promotional code-->
+        <br>
+        <small>
+          {{ product.d_coupon.name }}:
+          -{{ product.d_coupon.difference | costDisplay }}{{ currency.symbol }}
+          {% if product.d_coupon.symbol == '%' %}
+          <em>({{ product.d_coupon.value }}%)</em>
+          {% endif %}
+        </small>
+        {% endif %}
         
         {% if product.attachment %}
         <fieldset style="padding: 0 10px 10px;">
@@ -79,6 +102,10 @@
       </td>
       <!--Price (per 1 unit)-->
       <td class="text-center">
+		{% if product.old_cost %}
+        <!--Old cost-->
+        <del>{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del><br>
+        {% endif %}
         {{ product.cost | costDisplay }}{{ currency.symbol }}
       </td>
       <!--Count-->
@@ -117,7 +144,7 @@
       {{ discount.name }}{% if discount.percent %}({{ discount.discount }}){% endif %}:
       </td>
       <td colspan="2">
-        {{ discount.difference | costDisplay }}{{ currency.symbol }}
+        -{{ discount.difference | costDisplay }}{{ currency.symbol }}
       </td>
     </tr>
     {% endfor %}

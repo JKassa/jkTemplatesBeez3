@@ -25,17 +25,6 @@
     <img alt="info" src="media/system/images/tooltip.png" title="{{ discounts.sum.desc }}">
     {% endif %}
 	{% endif %}
-	{% if discounts.code %}
-	<br>
-	<!--Discounts code-->
-	{{ discounts.code.name }}: <span>-{{ discounts.code.difference }}</span>{{ currency.symbol }}
-	{% if discounts.code.percent %}
-    <em>({{ discounts.code.discount }}%)</em>
-    {% endif %}
-    {% if discounts.code.desc %}
-    <img alt="info" src="media/system/images/tooltip.png" title="{{ discounts.code.desc }}">
-    {% endif %}
-	{% endif %}
 	{% if delivery_cost %}
 	<br>
 	<!--Delivery cost-->

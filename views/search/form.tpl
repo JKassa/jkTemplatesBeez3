@@ -22,6 +22,7 @@
     </button>
   </fieldset>
 
+  {% if search_phrases %}
   <!--Filter search-->
   <fieldset>
     <label class="radio" id="searchphraseall-lbl" for="searchphraseall">
@@ -37,6 +38,7 @@
       {{ '_' | jtext: 'COM_JKASSA_EXACT_PHRASE' }}
     </label>
   </fieldset>
+  {% endif %}
   
   {% if searchareas %}
   <fieldset>
