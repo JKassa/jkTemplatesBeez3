@@ -21,7 +21,7 @@
 <!--Products-->
 {% if products %}
 <div class="block-products">
-  <ul class="items-row cols-3">
+  <ul class="items-row cols-3 categories-module">
     {% assign rowcount = 0 %}
     {% for product in products %}
       {% assign rowcount = rowcount | plus: 1 %}

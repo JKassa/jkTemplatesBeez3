@@ -3,8 +3,8 @@
   <div class="carousel-inner">
     {% for together in cheaper %}
       {% for cheap in together.cheaper %}
-      <ul class="items-row cols-3 item {% if cheap.active %}active{% endif %}">
-        <li class="column-1">
+      <ul class="items-row cols-3 categories-module item {% if cheap.active %}active{% endif %}">
+        <li class="column-1 text-center">
           <!--Product Image-->
           <div>
             <img {{ together.image | img_exists: '50x70' }} style="max-height: 30%; max-width: 30%;" alt="{{ together.alias }}" />
@@ -27,7 +27,7 @@
             </span>
           </div>
         </li>
-        <li class="column-2">
+        <li class="column-2 text-center">
           <!--Product Image-->
           <div>
             <img {{ cheap.image | img_exists: '50x70' }} style="max-height: 30%; max-width: 30%;" alt="{{ cheap.alias }}" />
@@ -52,7 +52,7 @@
             <span>{{ cheap.cost | costDisplay }}</span>{{ currency.symbol }}
           </div>
         </li>
-        <li class="column-3">
+        <li class="column-3 text-center">
           <div class="cost">
             <!--old price-->
             <del>
@@ -64,7 +64,10 @@
           </div>
           <!--discount-->
           <div class="discount">
-            {{ '_' | jtext: 'COM_JKASSA_DISCOUNT' }} {{ cheap.discount | costDisplay }}{{ cheap.symbol }}
+            {{ '_' | jtext: 'COM_JKASSA_DISCOUNT' }} {{ cheap.difference | costDisplay }}{{ currency.symbol }}
+			{% if cheap.percent %}
+		    <small>({{ cheap.discount }}%)</small>
+		    {% endif %}
           </div>
           <!--Add to cart-->
           <div>
@@ -81,14 +84,18 @@
   <a class="carousel-control left" href="#cheaperCarousel" data-slide="prev">&lsaquo;</a>
   <a class="carousel-control right" href="#cheaperCarousel" data-slide="next">&rsaquo;</a>
 </div>
-<script type="text/jscript">
-  jQuery('.cheaperCarousel').carousel({"interval": 5000, "pause": "hover"});
-  // carousel fix conflict with mootools
-  if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
-	  Element.implement({
-		  slide: function(how, mode){
-			  return this;
-		  }
-	  });
-  }
+<script>
+jQuery(document).ready(function ()
+{
+	jQuery('#cheaperCarousel').carousel({interval: false});
+	
+	// carousel fix conflict with mootools
+	if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
+		Element.implement({
+			slide: function(how, mode){
+				return this;
+			}
+		});
+	};
+});
 </script>
