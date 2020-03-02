@@ -4,6 +4,7 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 {{ 'script' | jhtml: 'js/template.js' }}
 
+{% if viewtmpl != 'component' %}
 {% if heading %}
 <!--Heading-->
 <h1>{{ heading }}</h1>
@@ -23,8 +24,10 @@
   {{ pretext }}
 </div>
 {% endif %}
+{% endif %}
 
 {% if reviews %}
+{% if viewtmpl != 'component' %}
 <!--Filters-->
 <form action="{{ form_action }}" method="post" name="reviewsForm" id="reviewsForm">
 	<ul class="actions">
@@ -48,6 +51,7 @@
 		</li>
 	</ul>
 </form>
+{% endif %}
 
 <!--Reviews-->
 <div>
@@ -55,13 +59,13 @@
 	<div class="article-info">
 		<div class="caption">
 			<div class="pull-left" style="margin-right: 10px;">
-				<a class="pull-left" href="{{ review.product_url }}" style="width: 64px;">
+				<a class="pull-left" href="{{ review.product_url }}" style="width: 64px;" target="_top">
 					<img alt="{{ review.product_alias }}" style="max-width: 64px; max-height: 64px;" src="{{ review.product_image }}">
 				</a>
 			</div>
 			<div style="overflow: hidden;">
 				<h4 style="margin-bottom: 10px;">
-					<a href="{{ review.product_url }}">
+					<a href="{{ review.product_url }}" target="_top">
 						{{ review.product_name }}
 					</a>
 				</h4>

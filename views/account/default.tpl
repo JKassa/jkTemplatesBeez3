@@ -73,6 +73,14 @@
     </a>
   </li>
   {% endif %}
+  {% if guest != 1 %}
+  <li>
+    {{ 'behavior.modal' | jhtml: '#jk-modal_reviews' }}
+    <a href="{{ reviews_url }}" id="jk-modal_reviews" rel="{handler: 'iframe', size: {x:768, y:430}}">
+      {{ '_' | jtext: 'COM_JKASSA_YOUR_REVIEWS' }} {{ reviews_quantity }}
+    </a>
+  </li>
+  {% endif %}
   {% if affiliate %}
   <li>
 	{{ 'behavior.modal' | jhtml: '#jk-modal_affiliate' }}

@@ -1,3 +1,3 @@
 <div{% if field.showon %} data-showon='{{ field.showon }}'{% endif %}>
-  {{ field.default }}
+  {{ field.tooltip }}{{ field.default }}
 </div>
